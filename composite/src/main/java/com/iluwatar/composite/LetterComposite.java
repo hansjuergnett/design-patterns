@@ -36,18 +36,22 @@ import java.util.List;
  */
 public abstract class LetterComposite {
 
+  private List<LetterComposite> children = new ArrayList<>();
+
   public void add(LetterComposite letter) {
+    children.add(letter);
   }
 
   public void remove(LetterComposite letter) {
+    children.remove(letter);
   }
 
   public LetterComposite getChild(int index) {
-    return null;
+    return children.remove(index);
   }
 
   public int count() {
-    return 0;
+    return children.size();
   }
 
   protected abstract void printThisBefore();
@@ -61,7 +65,9 @@ public abstract class LetterComposite {
   public void print() {
     printThisBefore();
 
-    // todo: iteriere über childern
+    for(LetterComposite letterComposite : children){
+      letterComposite.print();
+    }
 
     printThisAfter();
   }
