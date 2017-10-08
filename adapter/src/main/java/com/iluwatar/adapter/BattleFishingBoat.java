@@ -28,9 +28,23 @@ import org.slf4j.LoggerFactory;
 /**
  * @todo: implementiere einen objektbasierten Adapter für ein {@link FishingBoat}
  */
-public class BattleFishingBoat {
+public class BattleFishingBoat implements BattleShip{
 
   private static final Logger LOGGER = LoggerFactory.getLogger(BattleFishingBoat.class);
 
+  private FishingBoat fishingBoat = null;
 
+  public BattleFishingBoat() {
+    this.fishingBoat = new FishingBoat();
+  }
+
+  @Override
+  public void fire() {
+    LOGGER.info("fire!");
+  }
+
+  @Override
+  public void move() {
+    fishingBoat.sail();
+  }
 }
