@@ -7,10 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="abstract-factory" />
-        <module name="adapter" />
         <module name="builder" />
-        <module name="composite" />
-        <module name="decorator" />
         <module name="factory-method" />
         <module name="observer" />
         <module name="strategy" />
