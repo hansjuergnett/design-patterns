@@ -65,12 +65,20 @@ public class App {
 
     LOGGER.info("A troll with two huge clubs surprises you.");
     // 1.) @todo: instanziiere einen 'doubleClubbed' troll der 2 Keulen schwingt.
+    Troll doubleClubbed = new ClubbedTroll(clubbed);
+    doubleClubbed.attack();
+    doubleClubbed.fleeBattle();
+    LOGGER.info("DoubleClubbed troll power {}.\n", doubleClubbed.getAttackPower());
 
     LOGGER.info("A troll with a huge club and an arch surprises you.");
     /*
        2.) @todo: instanziiere einen 'clubbedArcherTroll' der eine Keule schwingt und einen Bogen hat.
         Hinweis: Erstelle dazu einen neuen ConcreteDecorator 'ArchTroll'
      */
+    Troll clubbedArcherTroll = new ArchTroll(clubbed);
+    clubbedArcherTroll.attack();
+    clubbedArcherTroll.fleeBattle();
+    LOGGER.info("ClubbedArcherTroll troll power {}.\n", clubbedArcherTroll.getAttackPower());
 
   }
 }
