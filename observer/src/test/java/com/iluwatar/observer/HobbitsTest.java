@@ -20,53 +20,41 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.composite;
+package com.iluwatar.observer;
+
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
+ * Date: 12/27/15 - 12:07 PM
  *
- * Composite interface
- *
- * TIPP: Lasst Euch vom Namen "Composite" nicht verwirren. Die Klasse ({@link LetterComposite} entspricht der "Component" (Diagramm Buch S. 214)
- * Die Klassen ({@link Word} und ({@link Sentence} entsprechen je einem "Composite" (aus dem Diagramm Buch S. 214)
- *
+ * @author Jeroen Meulemeester
  */
-public abstract class LetterComposite {
+@RunWith(Parameterized.class)
+public class HobbitsTest extends WeatherObserverTest<Hobbits> {
 
-  private List<LetterComposite> children = new ArrayList<>();
-
-  public void add(LetterComposite letter) {
-    children.add(letter);
+  @Parameterized.Parameters
+  public static Collection<Object[]> data() {
+    final List<Object[]> testData = new ArrayList<>();
+    testData.add(new Object[]{WeatherType.SUNNY, "The happy hobbits bade in the warm sun."});
+    testData.add(new Object[]{WeatherType.RAINY, "The hobbits look for cover from the rain."});
+    testData.add(new Object[]{WeatherType.WINDY, "The hobbits hold their hats tightly in the windy weather."});
+    testData.add(new Object[]{WeatherType.COLD, "The hobbits are shivering in the cold weather."});
+    return testData;
   }
-
-  public void remove(LetterComposite letter) {
-    children.remove(letter);
-  }
-
-  public LetterComposite getChild(int index) {
-    return children.get(index);
-  }
-
-  public int count() {
-    return children.size();
-  }
-
-  protected abstract void printThisBefore();
-
-  protected abstract void printThisAfter();
 
   /**
-   * Print
-   * TIPP: Rekursive Methode, ruft sich also selber auf
+   * Create a new test with the given weather and expected response
+   *
+   * @param weather  The weather that should be unleashed on the observer
+   * @param response The expected response from the observer
    */
-  public void print() {
-    printThisBefore();
-
-    for (LetterComposite letter : children) {
-      letter.print();
-    }
-    printThisAfter();
+  public HobbitsTest(final WeatherType weather, final String response) {
+    super(weather, response, Hobbits::new);
   }
+
 }

@@ -20,31 +20,20 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.adapter;
+package com.iluwatar.observer;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.junit.Test;
 
 /**
- * Da es sich um einen object based adapter handelt, verwendet er ein {@link FishingBoat}
+ * 
+ * Application test
+ *
  */
-public class BattleFishingBoat implements BattleShip{
+public class AppTest {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(BattleFishingBoat.class);
-
-  private FishingBoat fishingBoat = null;
-
-  public BattleFishingBoat() {
-    this.fishingBoat = new FishingBoat();
-  }
-
-  @Override
-  public void fire() {
-    LOGGER.info("fire!");
-  }
-
-  @Override
-  public void move() {
-    fishingBoat.sail();
+  @Test
+  public void test() {
+    String[] args = {};
+    App.main(args);
   }
 }

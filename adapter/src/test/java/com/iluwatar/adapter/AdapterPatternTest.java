@@ -56,10 +56,7 @@ public class AdapterPatternTest {
    * internally calling move method on the battleship object. The Adapter ({@link BattleFishingBoat}
    * ) converts the interface of the target class ( {@link FishingBoat}) into a suitable one
    * expected by the client ({@link Captain} ).
-   *
-   * @todo: aktiviere diese tests nachdem Du alle anderen todos erledigt hast
    */
-
 
   @Test
   public void testObjectAdapter() {

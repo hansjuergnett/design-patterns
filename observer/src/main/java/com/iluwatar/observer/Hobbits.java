@@ -20,31 +20,37 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.adapter;
+package com.iluwatar.observer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Da es sich um einen object based adapter handelt, verwendet er ein {@link FishingBoat}
+ * 
+ * Hobbits
+ *
  */
-public class BattleFishingBoat implements BattleShip{
+public class Hobbits implements WeatherObserver {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(BattleFishingBoat.class);
-
-  private FishingBoat fishingBoat = null;
-
-  public BattleFishingBoat() {
-    this.fishingBoat = new FishingBoat();
-  }
+  private static final Logger LOGGER = LoggerFactory.getLogger(Hobbits.class);
 
   @Override
-  public void fire() {
-    LOGGER.info("fire!");
-  }
-
-  @Override
-  public void move() {
-    fishingBoat.sail();
+  public void update(WeatherType currentWeather) {
+    switch (currentWeather) {
+      case COLD:
+        LOGGER.info("The hobbits are shivering in the cold weather.");
+        break;
+      case RAINY:
+        LOGGER.info("The hobbits look for cover from the rain.");
+        break;
+      case SUNNY:
+        LOGGER.info("The happy hobbits bade in the warm sun.");
+        break;
+      case WINDY:
+        LOGGER.info("The hobbits hold their hats tightly in the windy weather.");
+        break;
+      default:
+        break;
+    }
   }
 }

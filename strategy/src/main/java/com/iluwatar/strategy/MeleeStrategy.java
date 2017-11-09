@@ -20,31 +20,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.adapter;
+package com.iluwatar.strategy;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Da es sich um einen object based adapter handelt, verwendet er ein {@link FishingBoat}
+ * 
+ * Melee strategy.
+ *
  */
-public class BattleFishingBoat implements BattleShip{
+public class MeleeStrategy {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(BattleFishingBoat.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(MeleeStrategy.class);
 
-  private FishingBoat fishingBoat = null;
-
-  public BattleFishingBoat() {
-    this.fishingBoat = new FishingBoat();
-  }
-
-  @Override
-  public void fire() {
-    LOGGER.info("fire!");
-  }
-
-  @Override
-  public void move() {
-    fishingBoat.sail();
+  public void execute() {
+    LOGGER.info("With your Excalibur you sever the dragon's head!");
   }
 }

@@ -20,53 +20,53 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.composite;
+package com.iluwatar.observer;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 
+ * Weather can be observed by implementing {@link WeatherObserver} interface and registering as
+ * listener.
  *
- * Composite interface
  *
- * TIPP: Lasst Euch vom Namen "Composite" nicht verwirren. Die Klasse ({@link LetterComposite} entspricht der "Component" (Diagramm Buch S. 214)
- * Die Klassen ({@link Word} und ({@link Sentence} entsprechen je einem "Composite" (aus dem Diagramm Buch S. 214)
- *
+ * Die Klasse ist das Subject und enthält bereits Methoden zum Hinzufügen und Entfernen von Observern ({@link WeatherObserver})
+ * @todo: es fehlt allerdings noch die Funktionalität um Observer über Änderungen zu benachrichten, füge diese hinzu
  */
-public abstract class LetterComposite {
+public class Weather {
 
-  private List<LetterComposite> children = new ArrayList<>();
+  private static final Logger LOGGER = LoggerFactory.getLogger(Weather.class);
 
-  public void add(LetterComposite letter) {
-    children.add(letter);
+  private WeatherType currentWeather;
+  private List<WeatherObserver> observers;
+
+  public Weather() {
+    observers = new ArrayList<>();
+    currentWeather = WeatherType.SUNNY;
   }
 
-  public void remove(LetterComposite letter) {
-    children.remove(letter);
+  public void addObserver(WeatherObserver obs) {
+    observers.add(obs);
   }
 
-  public LetterComposite getChild(int index) {
-    return children.get(index);
+  public void removeObserver(WeatherObserver obs) {
+    observers.remove(obs);
   }
-
-  public int count() {
-    return children.size();
-  }
-
-  protected abstract void printThisBefore();
-
-  protected abstract void printThisAfter();
 
   /**
-   * Print
-   * TIPP: Rekursive Methode, ruft sich also selber auf
+   * Makes time pass for weather
    */
-  public void print() {
-    printThisBefore();
+  public void timePasses() {
+    WeatherType[] enumValues = WeatherType.values();
+    currentWeather = enumValues[(currentWeather.ordinal() + 1) % enumValues.length];
+    LOGGER.info("The weather changed to {}.", currentWeather);
+  }
 
-    for (LetterComposite letter : children) {
-      letter.print();
-    }
-    printThisAfter();
+  public WeatherType getCurrentWeather() {
+    return currentWeather;
   }
 }
