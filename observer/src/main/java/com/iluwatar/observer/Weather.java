@@ -64,9 +64,16 @@ public class Weather {
     WeatherType[] enumValues = WeatherType.values();
     currentWeather = enumValues[(currentWeather.ordinal() + 1) % enumValues.length];
     LOGGER.info("The weather changed to {}.", currentWeather);
+    notifyObservers();
   }
 
   public WeatherType getCurrentWeather() {
     return currentWeather;
+  }
+
+  private void notifyObservers(){
+    for (WeatherObserver observer: observers) {
+      observer.update(currentWeather);
+    }
   }
 }
