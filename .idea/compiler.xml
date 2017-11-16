@@ -14,7 +14,7 @@
         <module name="factory-method" />
         <module name="observer" />
         <module name="strategy" />
-        <module name="template-method" />
+        <module name="template-method (1)" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
@@ -26,6 +26,7 @@
       <module name="java-design-patterns" target="1.8" />
       <module name="observer" target="1.8" />
       <module name="strategy" target="1.8" />
+      <module name="template-method" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
