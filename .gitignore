@@ -1,8 +1,12 @@
 .DS_Store
 /.idea/
 .idea/workspace.xml
+
 .idea/compiler.xml
 .idea/misc.xml
 adapter/target/
 composite/target/
 decorator/target/
+*/target/
+/target/
+

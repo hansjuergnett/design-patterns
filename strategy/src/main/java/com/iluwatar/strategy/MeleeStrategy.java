@@ -32,6 +32,7 @@ import org.slf4j.LoggerFactory;
  */
 public class MeleeStrategy implements  DragonSlayingStrategy{
 
+
   private static final Logger LOGGER = LoggerFactory.getLogger(MeleeStrategy.class);
 
   public void execute() {
